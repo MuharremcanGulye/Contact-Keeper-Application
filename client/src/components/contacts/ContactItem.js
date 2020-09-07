@@ -3,42 +3,42 @@ import PropTypes from "prop-types";
 import ContactContext from "../../context/contact/contactContext";
 
 const ContactItem = ({ contact }) => {
-  const { _id, name, email, phone, type } = contact;
-
   const contactContext = useContext(ContactContext);
 
   const { deleteContact, setCurrent, clearCurrent } = contactContext;
 
   const onDelete = () => {
-    deleteContact(_id);
+    deleteContact(contact._id);
     clearCurrent();
   };
 
   return (
     <div className='card bg-light'>
       <h3 className='text-primary text-left'>
-        {name}{" "}
+        {contact.name}{" "}
         <span
           style={{ float: "right" }}
           className={
             "badge " +
-            (type === "professional" ? "badge-success" : "badge-primary")
+            (contact.type === "professional"
+              ? "badge-success"
+              : "badge-primary")
           }
         >
-          {type}
+          {contact.type}
         </span>
       </h3>
 
       <ul className='list'>
-        {email && (
+        {contact.email && (
           <li>
-            <i className='fas fa-envelope-open' /> {email}
+            <i className='fas fa-envelope-open' /> {contact.email}
           </li>
         )}
 
-        {phone && (
+        {contact.phone && (
           <li>
-            <i className='fas fa-phone' /> {phone}
+            <i className='fas fa-phone' /> {contact.phone}
           </li>
         )}
       </ul>

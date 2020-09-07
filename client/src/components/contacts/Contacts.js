@@ -5,12 +5,12 @@ import ContactItem from "./ContactItem";
 const Contacts = () => {
   const contactContext = useContext(ContactContext);
 
-  const { contacts, filtered, getContacts } = contactContext;
-
   useEffect(() => {
     getContacts();
     //eslint-disable-next-line
   }, []);
+
+  const { contacts, filtered, getContacts } = contactContext;
 
   if (contacts.length === 0) {
     return <h4>Please add a contact</h4>;
